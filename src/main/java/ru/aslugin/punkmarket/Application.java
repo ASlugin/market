@@ -11,6 +11,6 @@ public class Application {
     public static void main(String[] args) {
         var context = SpringApplication.run(Application.class, args);
         ApplicationConfig config = context.getBean(ApplicationConfig.class);
-        System.out.println(config);
+//        System.out.println(config);
     }
 }
