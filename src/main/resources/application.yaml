@@ -1,2 +1,6 @@
 app:
   test: Hello, PUNK market!
+
+springdoc:
+  swagger-ui:
+    path: /swagger
