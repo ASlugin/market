@@ -4,15 +4,16 @@ services:
   postgres:
     image: postgres:16.1
     container_name: postgres
-    ports:
-      - "5432:5432"
     restart: always
     environment:
       POSTGRES_DB: market
       POSTGRES_USER: aslugin
       POSTGRES_PASSWORD: 12345678
+    networks:
+      - backend
     volumes:
       - db-data:/var/lib/postgresql/data
+
 
   pgadmin:
     image: dpage/pgadmin4
@@ -25,9 +26,15 @@ services:
       PGADMIN_DEFAULT_PASSWORD: 12345678
     volumes:
       - pgadmin-data:/var/lib/pgadmin
+    networks:
+      - backend
     depends_on:
       - postgres
 
 volumes:
   db-data:
   pgadmin-data:
+
+networks:
+  backend:
+    driver: bridge
