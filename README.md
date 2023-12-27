@@ -1,13 +1,15 @@
-# Backend for online shop
-
 [![Actions Status](https://github.com/ASlugin/punk-market/workflows/Checkstyle/badge.svg)](https://github.com/ASlugin/punk-market/actions/workflows/checkstyle.yaml)
 
+# Backend for online shop
+
+
+## Technologies
 <div>
   <img src="https://github.com/devicons/devicon/blob/master/icons/java/java-original-wordmark.svg" title="Java" alt="Java" width="40" height="40"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/spring/spring-original-wordmark.svg" title="Spring" alt="Spring" width="40" height="40"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/postgresql/postgresql-original-wordmark.svg" title="PostgreSQL" alt="PostgreSQL" width="40" height="40"/>
+  <img src="https://www.liquibase.com/wp-content/uploads/2020/05/Liquibase_logo_vertical_RGB.svg" title="Liquibase" alt="Liquibase" width="40" height="40"/>
 </div>
-
 
 ## How to run
 
@@ -17,7 +19,7 @@
 ```bash
 docker compose up -d
 ```
-3. Server start on 80 port
+3. Server starts on 80 port
 ```
-http:\\localhost:80\swagger
+http:\\localhost\swagger # documentation for API
 ```
