@@ -5,16 +5,14 @@ services:
     image: postgres:16.1
     container_name: postgres
     restart: always
-    ports:
-      - "5432:5432"
     environment:
       POSTGRES_DB: market
       POSTGRES_USER: aslugin
       POSTGRES_PASSWORD: 12345678
-    networks:
-      - backend
     volumes:
       - db-data:/var/lib/postgresql/data
+    networks:
+      - backend
 
   pgadmin:
     image: dpage/pgadmin4
@@ -27,10 +25,28 @@ services:
       PGADMIN_DEFAULT_PASSWORD: 12345678
     volumes:
       - pgadmin-data:/var/lib/pgadmin
-    networks:
-      - backend
     depends_on:
       - postgres
+    networks:
+      - backend
+
+  liquibase-migrations:
+    image: liquibase/liquibase
+    container_name: liquibase
+    restart: on-failure
+    command:
+      - --changelog-file=changelog-master.xml
+      - --url=jdbc:postgresql://postgres:5432/market
+      - --driver=org.postgresql.Driver
+      - --username=aslugin
+      - --password=12345678
+      - update
+    volumes:
+      - ./src/main/resources/db/migrations/:/liquibase/changelog/
+    depends_on:
+      - postgres
+    networks:
+      - backend
 
 volumes:
   db-data:
