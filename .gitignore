@@ -31,3 +31,6 @@ replay_pid*
 # Maven
 log/
 target/
+
+# Ignore liquibase file for local running
+liquibase.properties
